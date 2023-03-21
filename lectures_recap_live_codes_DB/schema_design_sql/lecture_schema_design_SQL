@@ -1,0 +1,54 @@
+SELECT first_name, last_name FROM patients
+SELECT first_name, last_name FROM doctors
+SELECT * FROM patients
+SELECT * FROM patients WHERE age = 21;
+SELECT * FROM doctors WHERE speciality = 'Cardiac Surgery'
+
+SELECT *
+FROM doctors
+WHERE  speciality
+LIKE '%Surgery'
+
+SELECT *
+FROM doctors
+WHERE speciality = 'Cardiac Sugery'
+AND first_name = 'Steve'
+
+SELECT *
+FROM patients
+ORDER BY age ASC
+
+SELECT *
+FROM patients
+ORDER BY age DESC
+
+SELECT COUNT(*)
+FROM doctors
+
+SELECT COUNT(*) AS c, speciality
+FROM doctors
+GROUP BY speciality
+ORDER BY c DESC
+
+SELECT *
+FROM inhabitants i
+WHERE city_id = 2
+
+SELECT *
+FROM inhabitants i
+JOIN cities c ON c.id = i.city_id
+WHERE c.name = 'paris'
+
+SELECT *
+FROM ihabitants i
+JOIN cities c ON c.id = i.city_id
+WHERE i.age >= 18
+AND c.name = 'paris'
+
+SELECT c.date, p.first_name, p.last_name, d.first_name, d.last_name
+FROM consultations c
+JOIN patients p ON p.id = c.patient_id
+JOIN doctors d ON d.id = c.doctor_id
+WHERE c.date >= '2022-12-1'
+AND c.date < '2023-01-01'
+ORDER BY c.date ASC
